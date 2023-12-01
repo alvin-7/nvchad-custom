@@ -69,6 +69,9 @@ local plugins = {
       "mfussenegger/nvim-dap",
     }
   },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+  },
 
   {
     "ray-x/go.nvim",
