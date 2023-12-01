@@ -60,17 +60,15 @@ local plugins = {
   },
 
   {
-    "mfussenegger/nvim-dap",
-  },
-
-  {
     "rcarriga/nvim-dap-ui",
     dependencies = {  -- optional packages
       "mfussenegger/nvim-dap",
-    }
+    },
+    lazy = true,
   },
   {
     "theHamsta/nvim-dap-virtual-text",
+    lazy = true,
   },
 
   {
@@ -85,7 +83,8 @@ local plugins = {
     end,
     event = {"CmdlineEnter"},
     ft = {"go", 'gomod'},
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+    lazy = true,
   },
 
   -- To make a plugin not be loaded

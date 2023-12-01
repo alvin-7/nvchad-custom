@@ -7,15 +7,14 @@
 -- })
 
 local opt = vim.opt
-local api = vim.api
 opt.relativenumber = true
--- Run gofmt + goimport on save
 
-local format_sync_grp = api.nvim_create_augroup("GoImport", {})
-api.nvim_create_autocmd("BufWritePre", {
+-- Run gofmt + goimport on save
+local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
-   require('go.format').goimport()
+    vim.lsp.buf.format()
   end,
   group = format_sync_grp,
 })
