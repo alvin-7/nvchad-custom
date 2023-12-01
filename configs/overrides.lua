@@ -21,6 +21,7 @@ M.mason = {
     "lua-language-server",
     "stylua",
 
+    "goimports",
   },
 }
 
