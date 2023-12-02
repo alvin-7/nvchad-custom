@@ -48,6 +48,11 @@ local plugins = {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
+  },
+
+  {
     "NvChad/nvcommunity",
     {import = "nvcommunity.motion.hop"},
   },
