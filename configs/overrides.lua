@@ -42,7 +42,7 @@ M.nvimtree = {
   },
 }
 
-local cmp = require("cmp")
+local cmp = require "cmp"
 M.cmp = {
   -- preselect = cmp.PreselectMode.None,
   -- sources = {
@@ -76,4 +76,3 @@ M.cmp = {
 }
 
 return M
-
