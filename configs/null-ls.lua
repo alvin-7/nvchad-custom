@@ -8,9 +8,7 @@ local sources = {
   b.formatting.stylua,
 
   -- go
-  b.formatting.gofmt,
   b.formatting.goimports,
-
 }
 
 null_ls.setup {

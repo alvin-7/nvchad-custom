@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -54,31 +54,31 @@ local plugins = {
 
   {
     "NvChad/nvcommunity",
-    {import = "nvcommunity.motion.hop"},
+    { import = "nvcommunity.motion.hop" },
   },
 
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = {  -- optional packages
+    dependencies = { -- optional packages
       "mfussenegger/nvim-dap",
     },
-    lazy = true,
   },
   {
     "theHamsta/nvim-dap-virtual-text",
-    lazy = true,
   },
 
   {
     "ray-x/go.nvim",
-    dependencies = {  -- optional packages
+    dependencies = { -- optional packages
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
@@ -86,11 +86,15 @@ local plugins = {
     config = function()
       require("go").setup()
     end,
-    event = {"CmdlineEnter"},
-    ft = {"go", 'gomod'},
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-    lazy = true,
   },
+
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  -- },
 
   -- To make a plugin not be loaded
   -- {

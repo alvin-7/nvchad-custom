@@ -44,15 +44,15 @@ M.nvimtree = {
 
 local cmp = require "cmp"
 M.cmp = {
-  -- preselect = cmp.PreselectMode.None,
-  -- sources = {
-  --    { name = "copilot" },
-  --    { name = "nvim_lsp" },
-  --    { name = "luasnip" },
-  --    { name = "buffer" },
-  --    { name = "nvim_lua" },
-  --    { name = "path" },
-  -- },
+  preselect = cmp.PreselectMode.None,
+  sources = {
+    { name = "copilot" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
+  },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -64,13 +64,26 @@ M.cmp = {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
-    ["<Tab>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    },
-    ["<S-Tab>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        local entry = cmp.get_selected_entry()
+        if not entry then
+          cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+        else
+          cmp.confirm()
+        end
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    -- ["<Tab>"] = {
+    --   i = cmp.config.disable,
+    --   s = cmp.config.disable,
+    --   c = cmp.config.disable,
+    -- },
+    ["<S-Tab>"] = {
+      i = cmp.config.disable,
+      s = cmp.config.disable,
     },
   },
 }
